@@ -7,13 +7,13 @@ static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Unifont:size=18", };
-static const char dmenufont[]       = "0xProto Nerd Font:size=13:style=bold";
-static const char col_gray1[]       = "#282828"; //topbar main bg
-static const char col_gray2[]       = "#383838"; //topbar path bg and selected tag bg  
-static const char col_gray3[]       = "#ebdbb2"; //topbar fg
-static const char col_gray4[]       = "#282828";
-static const char col_cyan[]        = "#ebdbb2"; //window border color
+static const char *fonts[]          = { "Unifont:size=20", };
+static const char dmenufont[]       = "Unifont:size=20";/*"0xProto Nerd Font:size=13:style=bold";*/
+static const char col_gray1[]       = "#191724"; //topbar main bg
+static const char col_gray2[]       = "#e0def4"; //topbar path bg and selected tag bg  
+static const char col_gray3[]       = "#e0def4"; //topbar fg
+static const char col_gray4[]       = "#191724";
+static const char col_cyan[]        = "#eb6f92";//window border color
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -61,8 +61,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *volumeUP[] = { "amixer", "-D", "pulse", "sset", "Master", "10%+", NULL}; //VolumeUP
-static const char *volumeDOWN[] = { "amixer", "-D", "pulse", "sset", "Master", "10%-", NULL}; //VolumeDOWN
+static const char *volumeUP[] = { "amixer", "-D", "pulse", "sset", "Master", "5%+", NULL}; //VolumeUP
+static const char *volumeDOWN[] = { "amixer", "-D", "pulse", "sset", "Master", "5%-", NULL}; //VolumeDOWN
 static const char *volumeMUTE[] = { "amixer", "-D", "pulse", "sset", "Master", "toggle", NULL}; //VolumeMUTE
 static const char *screenshot[] = { "scrot", "/home/cyberllloner/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.jpg", NULL}; //Screenshot (Install scrot)
 static const Key keys[] = {
@@ -70,8 +70,8 @@ static const Key keys[] = {
 	{ 0,				XF86XK_AudioRaiseVolume,  spawn, {.v = volumeUP   } },
 	{ 0,				XF86XK_AudioLowerVolume,  spawn, {.v = volumeDOWN } },
 	{ 0,				XF86XK_AudioMute, 	  spawn, {.v = volumeMUTE } },
-	{ 0,                            XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl set +10%") }, //Install brightnessctl+Add yourself to video group
-	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-") },
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl set +5%") }, //Install brightnessctl+Add yourself to video group
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 5%-") },
 	{ 0,				XK_Print,		  spawn, {.v = screenshot} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
